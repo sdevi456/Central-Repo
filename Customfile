@@ -1,0 +1,7 @@
+
+FROM ubuntu
+WORKDIR /tmp
+RUN echo "Hello Docker" > /tmp/file2
+ENV myname Devi
+copy file3 /tmp
+ADD demo.tar.gz /tmp
