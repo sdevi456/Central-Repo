@@ -1,0 +1,87 @@
+// server.js
+const express = require('express');
+const path = require('path');
+const app = express();
+const PORT = 3000;
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});
+
+// /public/index.html
+/*
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Tic-Tac-Toe</h1>
+    <div class="board" id="board"></div>
+    <script src="app.js"></script>
+</body>
+</html>
+*/
+
+// /public/style.css
+/*
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    background-color: #f0f2f5;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 5px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+}
+*/
+
+// /public/app.js
+/*
+const board = document.getElementById('board');
+const cells = [];
+
+function createBoard() {
+    for (let i = 0; i < 9; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.addEventListener('click', () => markCell(cell));
+        board.appendChild(cell);
+        cells.push(cell);
+    }
+}
+
+function markCell(cell) {
+    if (!cell.textContent) {
+        cell.textContent = 'X'; // Simple game logic
+    }
+}
+
+createBoard();
+*/
+
